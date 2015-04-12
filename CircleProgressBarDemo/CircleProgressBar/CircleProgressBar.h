@@ -21,7 +21,7 @@ typedef NSString*(^StringGenerationBlock)(CGFloat progress);
  Interface provides ability to customize each element of CircleProgressBar independently;
  
  */
-IB_DESIGNABLE
+//IB_DESIGNABLE
 @interface CircleProgressBar : UIView
 
 /// @brief Width of Progress Bar
