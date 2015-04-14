@@ -60,6 +60,30 @@ const CGFloat AnimationChangeTimeStep = 0.01f;
     StringGenerationBlock _hintTextGenerationBlock;
 }
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        _animationDuration = AnimationChangeTimeDuration;
+        _animationStep = AnimationChangeTimeStep;
+    }
+    
+    return self;
+}
+
+- (instancetype)init {
+    return [self initWithFrame:CGRectZero];
+}
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        _animationDuration = AnimationChangeTimeDuration;
+        _animationStep = AnimationChangeTimeStep;
+    }
+    
+    return self;
+}
+
 - (void)setProgress:(CGFloat)progress animated:(BOOL)animated {
     progress = [self progressAccordingToBounds:progress];
     if (_progress == progress) {
@@ -241,7 +265,7 @@ const CGFloat AnimationChangeTimeStep = 0.01f;
     _currentAnimationProgress = _startProgress = startProgress;
     _endProgress = endProgress;
     
-    _animationProgressStep = (_endProgress - _startProgress) * AnimationChangeTimeStep / AnimationChangeTimeDuration;
+    _animationProgressStep = (_endProgress - _startProgress) * self.animationStep / self.animationDuration;
     
     _animationTimer = [NSTimer scheduledTimerWithTimeInterval:AnimationChangeTimeStep target:self selector:@selector(updateProgressBarForAnimation) userInfo:nil repeats:YES];
 }

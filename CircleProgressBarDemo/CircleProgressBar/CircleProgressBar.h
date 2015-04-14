@@ -54,6 +54,10 @@ typedef NSString*(^StringGenerationBlock)(CGFloat progress);
 /// To change ProgressBar's progress use setProgress:animated:
 @property (nonatomic, readonly) CGFloat progress;
 
+/* Animation Properties */
+@property (nonatomic) CGFloat animationDuration;
+@property (nonatomic) CGFloat animationStep;
+
 /** Used to set progress with animation or without
  
  @param progress progress to be set
